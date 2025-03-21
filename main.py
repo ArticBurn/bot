@@ -19,6 +19,13 @@ async def on_ready():
     synced = await bot.tree.sync()
     print(f"✅ Bot {bot.user} sudah online! Slash commands synced: {len(synced)}")
 
+# Rich Presence (Custom Status)
+    activity = discord.Game(
+        # type=discord.ActivityType.,  # Bisa juga: playing, listening, streaming
+        name="Shit with scammed ppl"  # Pesan yang ditampilkan di status
+    )
+    await bot.change_presence(status=discord.Status.online, activity=activity)
+
 @bot.command()
 async def config(ctx):
     """Fetching data from arkdedicated and show to guild"""
