@@ -7,7 +7,7 @@ from keep_alive import keep_alive
 
 
 # Masukkan token bot kamu
-TOKEN = os.getenv("KEY")
+TOKEN = os.getenv("DISCORD_TOKEN")
 URL = "https://cdn2.arkdedicated.com/asa/dynamicconfig.ini"
 
 # Inisialisasi bot
