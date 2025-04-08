@@ -1,19 +1,14 @@
-# Gunakan base image Python
 FROM python:3.11-slim
 
-# Install ffmpeg dan dependensi lain
-RUN apt-get update && apt-get install -y ffmpeg
+# Install system dependencies
+RUN apt-get update && apt-get install -y ffmpeg libsodium-dev
 
-# Bikin working directory
+# Copy source code
 WORKDIR /app
-
-# Copy requirements dan install
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy semua file project
 COPY . .
 
-# Jalankan aplikasi
-CMD ["python", "main.py"]
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Jalankan bot
+CMD ["python", "main.py"]
