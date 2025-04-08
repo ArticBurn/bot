@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     synced = await bot.tree.sync()
-    print(f"✅ Bot {bot.user} sudah online! Slash commands synced: {len(synced)}")
+    print(f"✅ Bot {bot.user} online! Slash commands synced: {len(synced)}")
 
 # Rich Presence (Custom Status)
     activity = discord.Game(
