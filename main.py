@@ -42,11 +42,11 @@ async def rate(interaction: discord.Interaction):
         await interaction.response.send_message(f"❌ Error: {e}")
 
 # command /play url
-@bot.tree.command(name="play", description="Putar lagu dari link YouTube")
-@app_commands.describe(url="Link YouTube yang ingin diputar")
+@bot.tree.command(name="play", description="Play mberothhhhh")
+@app_commands.describe(url="link")
 async def play(interaction: discord.Interaction, url: str):
     if not interaction.user.voice:
-        await interaction.response.send_message("🚫 Kamu harus join voice channel dulu.", ephemeral=True)
+        await interaction.response.send_message("join dulu coy", ephemeral=True)
         return
 
     voice_channel = interaction.user.voice.channel
@@ -55,7 +55,7 @@ async def play(interaction: discord.Interaction, url: str):
     elif interaction.guild.voice_client.channel != voice_channel:
         await interaction.guild.voice_client.move_to(voice_channel)
 
-    await interaction.response.send_message(f"🔄 Memutar musik dari: {url}")
+    await interaction.response.send_message(f"play : {url}")
 
     ydl_opts = {
         'format': 'bestaudio',
@@ -71,17 +71,17 @@ async def play(interaction: discord.Interaction, url: str):
         source = await discord.FFmpegOpusAudio.from_probe(audio_url, method='fallback')
         interaction.guild.voice_client.play(source)
     except Exception as e:
-        await interaction.followup.send(f"❌ Gagal memutar lagu: {e}")
+        await interaction.followup.send(f"error {e}")
         
 #command /stop
-@bot.tree.command(name="stop", description="Berhenti memutar musik dan keluar dari voice channel")
+@bot.tree.command(name="stop", description="stop son2an")
 async def stop(interaction: discord.Interaction):
     vc = interaction.guild.voice_client
     if vc:
         await vc.disconnect()
-        await interaction.response.send_message("⛔ Musik dihentikan dan bot keluar dari channel.")
+        await interaction.response.send_message("kokot")
     else:
-        await interaction.response.send_message("❌ Bot tidak sedang berada di voice channel.")
+        await interaction.response.send_message("ganok tanggapan")
 
 # run_bot
 keep_alive()
