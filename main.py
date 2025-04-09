@@ -42,48 +42,48 @@ async def rate(interaction: discord.Interaction):
     except Exception as e:
         await interaction.response.send_message(f"❌ Error: {e}")
 
-# command /play url
-@bot.tree.command(name="play", description="Play mberothhhhh")
-@app_commands.describe(url="link")
-async def play(interaction: discord.Interaction, url: str):
-    if not interaction.user.voice:
-        await interaction.response.send_message("join dulu coy", ephemeral=True)
-        return
+# # command /play url
+# @bot.tree.command(name="play", description="Play mberothhhhh")
+# @app_commands.describe(url="link")
+# async def play(interaction: discord.Interaction, url: str):
+#     if not interaction.user.voice:
+#         await interaction.response.send_message("join dulu coy", ephemeral=True)
+#         return
 
-    voice_channel = interaction.user.voice.channel
-    if interaction.guild.voice_client is None:
-        await voice_channel.connect()
-    elif interaction.guild.voice_client.channel != voice_channel:
-        await interaction.guild.voice_client.move_to(voice_channel)
+#     voice_channel = interaction.user.voice.channel
+#     if interaction.guild.voice_client is None:
+#         await voice_channel.connect()
+#     elif interaction.guild.voice_client.channel != voice_channel:
+#         await interaction.guild.voice_client.move_to(voice_channel)
 
-    await interaction.response.send_message(f"play : {url}")
+#     await interaction.response.send_message(f"play : {url}")
 
-    ydl_opts = {
-        'format': 'bestaudio',
-        'cookiefile': 'cookies.txt',
-        'quiet': True,
-        'no_warnings': True,
-    }
+#     ydl_opts = {
+#         'format': 'bestaudio',
+#         'cookiefile': 'cookies.txt',
+#         'quiet': True,
+#         'no_warnings': True,
+#     }
 
-    try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=False)
-            audio_url = info['url']
+#     try:
+#         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+#             info = ydl.extract_info(url, download=False)
+#             audio_url = info['url']
 
-        source = await discord.FFmpegOpusAudio.from_probe(audio_url, method='fallback')
-        interaction.guild.voice_client.play(source)
-    except Exception as e:
-        await interaction.followup.send(f"error {e}")
+#         source = await discord.FFmpegOpusAudio.from_probe(audio_url, method='fallback')
+#         interaction.guild.voice_client.play(source)
+#     except Exception as e:
+#         await interaction.followup.send(f"error {e}")
         
-#command /stop
-@bot.tree.command(name="stop", description="stop son2an")
-async def stop(interaction: discord.Interaction):
-    vc = interaction.guild.voice_client
-    if vc:
-        await vc.disconnect()
-        await interaction.response.send_message("kokot")
-    else:
-        await interaction.response.send_message("ganok tanggapan")
+# #command /stop
+# @bot.tree.command(name="stop", description="stop son2an")
+# async def stop(interaction: discord.Interaction):
+#     vc = interaction.guild.voice_client
+#     if vc:
+#         await vc.disconnect()
+#         await interaction.response.send_message("kokot")
+#     else:
+#         await interaction.response.send_message("ganok tanggapan")
 
 # run_bot
 keep_alive()
