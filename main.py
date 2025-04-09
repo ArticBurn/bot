@@ -60,7 +60,7 @@ async def play(interaction: discord.Interaction, url: str):
 
     ydl_opts = {
         'format': 'bestaudio',
-        'cookiefile': 'cookies.txt'
+        'cookiefile': 'cookies.txt',
         'quiet': True,
         'no_warnings': True,
     }
