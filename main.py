@@ -4,7 +4,7 @@ from discord.ext import commands
 import requests
 import os
 import yt_dlp
-from yt-dlp import YoutubeDL
+from yt_dlp import YoutubeDL
 
 from keep_alive import keep_alive
 
