@@ -4,6 +4,7 @@ from discord.ext import commands
 import requests
 import os
 import yt_dlp
+from yt-dlp import YoutubeDL
 
 from keep_alive import keep_alive
 
@@ -59,6 +60,7 @@ async def play(interaction: discord.Interaction, url: str):
 
     ydl_opts = {
         'format': 'bestaudio',
+        'cookiefile': 'cookies.txt'
         'quiet': True,
         'no_warnings': True,
     }
